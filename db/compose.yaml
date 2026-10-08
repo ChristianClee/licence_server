@@ -1,0 +1,15 @@
+services:
+  mysql:
+    image: mysql:latest
+    container_name: ilyaMysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 123
+    ports:
+      - "3307:3306"
+    volumes:
+      - my-db-volume:/var/lib/mysql
+      - ./01_damp_tables_init.sql:/docker-entrypoint-initdb.d/01_damp_tables_init.sql:ro
+      - ./02_damp_testing_insert.sql:/docker-entrypoint-initdb.d/02_damp_testing_insert.sql
+
+volumes:
+  my-db-volume:

@@ -1,0 +1,25 @@
+{
+  "name": "license_server",
+  "version": "1.0.0",
+  "description": "This is webserver for control the licenses sold",
+  "license": "ISC",
+  "author": "Ilya Mishkov",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "dev": "node dev_start.js"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.4",
+    "chalk": "^6.0.1",
+    "chokidar": "^5.0.0",
+    "express": "^5.2.1",
+    "tsc-alias": "^1.9.7",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "mysql2": "^3.24.5"
+  }
+}
