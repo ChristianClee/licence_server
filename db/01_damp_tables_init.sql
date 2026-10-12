@@ -86,13 +86,13 @@ CREATE TABLE User(
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_Company INT NOT NULL,
     password VARCHAR(255) NOT NULL,
-    id_permission INT NOT NULL,
+    id_Permission INT NOT NULL,
     email VARCHAR(255) NOT NULL,
     phone VARCHAR(255) DEFAULT NULL,
     created_date_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     deleted_date_time DATETIME DEFAULT NULL,
     FOREIGN KEY (id_Company) REFERENCES Company(id),
-    FOREIGN KEY (id_permission) REFERENCES Permission(id)
+    FOREIGN KEY (id_Permission) REFERENCES Permission(id)
 );
 
 CREATE TABLE Change_license_req(
@@ -107,19 +107,3 @@ CREATE TABLE Change_license_req(
     FOREIGN KEY (id_User) REFERENCES User(id),
     FOREIGN KEY (id_Mother_board) REFERENCES Mother_board(id)
 );
-
-
-INSERT INTO Licence_type (name) VALUES
-('base'),
-('server'),
-('extend');
-
-INSERT INTO Permission(name) VALUES
-('admin'),
-('garantie operator'),
-('production operator'),
-('auditor');
-
-
-
-

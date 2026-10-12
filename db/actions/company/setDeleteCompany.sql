@@ -1,0 +1,1 @@
+UPDATE Company SET Company.deleted_date_time = CURRENT_TIMESTAMP WHERE id = ?;

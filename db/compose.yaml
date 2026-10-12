@@ -9,7 +9,8 @@ services:
     volumes:
       - my-db-volume:/var/lib/mysql
       - ./01_damp_tables_init.sql:/docker-entrypoint-initdb.d/01_damp_tables_init.sql:ro
-      - ./02_damp_testing_insert.sql:/docker-entrypoint-initdb.d/02_damp_testing_insert.sql
+      - ./02_damp_nessasary_insert.sql:/docker-entrypoint-initdb.d/02_damp_nessasary_insert.sql:ro
+      - ./03_damp_testing_insert.sql:/docker-entrypoint-initdb.d/03_damp_testing_insert.sql
 
 volumes:
   my-db-volume:
