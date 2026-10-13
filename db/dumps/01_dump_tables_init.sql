@@ -95,7 +95,7 @@ CREATE TABLE User(
     FOREIGN KEY (id_Permission) REFERENCES Permission(id)
 );
 
-CREATE TABLE Change_license_req(
+CREATE TABLE Changed_licence_req(
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_User INT NOT NULL,
     id_Mother_board INT UNIQUE NOT NULL,

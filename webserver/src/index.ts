@@ -1,16 +1,10 @@
 import {pool} from './db.js'
 import { app } from './app.js'
-// import { addCompanyController, getAllCompanyController, setDeleteCompanyController } from './controllers/companyController.js'
+import { TestServices } from '@/tests/index.js'
 
-// const app = express();
 const PORT = 3000;
 
-
-// await addCompanyController()
-// await addCompanyController()
-// await addCompanyController()
-// await getAllCompanyController()
-// await setDeleteCompanyController()
+// new TestServices();
 
 
 app.listen(PORT, () => {

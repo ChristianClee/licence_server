@@ -8,7 +8,7 @@ const name_company = "DEPO"
   
 export async function getAllCompanyController(req: Request, res: Response) {
   try {
-    await getAllCompanyDb()
+    await getAllCompanyDb('all')
   } catch (err) {
     console.log(err);
   }

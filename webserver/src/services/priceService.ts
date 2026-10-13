@@ -1,5 +1,5 @@
 import { pool } from "@/db.js"
-import { e_updateType } from "@/types.js"
+import { e_updateType } from "@/types/other.js"
 
 
 

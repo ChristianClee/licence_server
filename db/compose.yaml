@@ -8,9 +8,9 @@ services:
       - "3307:3306"
     volumes:
       - my-db-volume:/var/lib/mysql
-      - ./01_damp_tables_init.sql:/docker-entrypoint-initdb.d/01_damp_tables_init.sql:ro
-      - ./02_damp_nessasary_insert.sql:/docker-entrypoint-initdb.d/02_damp_nessasary_insert.sql:ro
-      - ./03_damp_testing_insert.sql:/docker-entrypoint-initdb.d/03_damp_testing_insert.sql
+      - ./dumps/01_dump_tables_init.sql:/docker-entrypoint-initdb.d/01_dump_tables_init.sql:ro
+      - ./dumps/02_dump_nessasary_insert.sql:/docker-entrypoint-initdb.d/02_dump_nessasary_insert.sql:ro
+      - ./dumps/03_dump_testing_insert.sql:/docker-entrypoint-initdb.d/03_dump_testing_insert.sql
 
 volumes:
   my-db-volume:

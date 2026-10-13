@@ -1,0 +1,1 @@
+SELECT EXISTS(SELECT * FROM Company WHERE id = ?) AS exists_flag;;

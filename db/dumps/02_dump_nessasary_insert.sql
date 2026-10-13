@@ -6,7 +6,7 @@ INSERT INTO Licence_type (name) VALUES
 ('extend');
 
 INSERT INTO Permission(name) VALUES
-('admin'),
-('garantie operator'),
-('production operator'),
-('auditor');
+('administrator'),
+('auditor')
+('operatorProduction'),
+('operatorGuarantee');

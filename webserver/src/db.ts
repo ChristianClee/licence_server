@@ -4,7 +4,7 @@ import path from 'path'
 import fs from "fs"
 import { fileURLToPath } from "url"
 import type { RowDataPacket, ResultSetHeader } from 'mysql2/promise';
-import { pathDBactions } from '@/types.js'
+import { pathDBactions } from '@/types/other.js'
 
 interface UrlRow extends RowDataPacket {
   url: string;
@@ -26,7 +26,7 @@ export const pool = mysql.createPool({
   database: 'mishkov_db',
 });
 
-const get_all_urls_path = getFullDbPath("get_all_urls.sql");
+const get_all_urls_path = getFullDbPath("urls/getAllUrls.sql");
 let urls:string[] = [];
 
 

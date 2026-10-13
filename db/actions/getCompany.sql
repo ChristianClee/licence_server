@@ -1,1 +1,0 @@
-SELECT Company.name from Company;
