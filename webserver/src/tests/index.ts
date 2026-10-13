@@ -8,7 +8,8 @@ export class TestServices {
     }
     private async testCompany_getAllCompanyDb(){
         try{
-            await getAllCompanyDb('all', true);
+            // await getAllCompanyDb('all', true);
+            await getAllCompanyDb('count', false);
         }catch(e){
             console.error(e)
         }
