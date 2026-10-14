@@ -1,0 +1,1 @@
+DELETE FROM Price WHERE id = ?;

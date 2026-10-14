@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { getAllLicencesTypeController } from '@/controllers/licencesTypeController.js';
-import { e_route } from './types.js'
+import { e_route } from '../types/routePaths.js'
 
 
 const licencesTypeRouter =  Router();

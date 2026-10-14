@@ -29,7 +29,7 @@ CREATE TABLE Url(
     FOREIGN KEY (id_Licence_type) REFERENCES Licence_type(id),
     FOREIGN KEY (id_Company) REFERENCES Company(id)
 );
-CREATE TABLE Average_Price(
+CREATE TABLE Average_price(
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_Licence_type INT NOT NULL,
     price DECIMAL(10,2) DEFAULT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE Price(
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_Average_price INT NOT NULL,
     contract_price DECIMAL(10,2) DEFAULT NULL,
-    FOREIGN KEY (id_Average_price) REFERENCES Average_Price(id)
+    FOREIGN KEY (id_Average_price) REFERENCES Average_price(id)
 );
 
 CREATE TABLE Licence_free(

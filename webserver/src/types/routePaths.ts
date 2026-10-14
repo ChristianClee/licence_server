@@ -12,3 +12,8 @@ export enum e_route {
     super_users = '/super_users',
     permission = '/permission'
 };
+export enum e_params {
+    id_company = ':id_company',
+    id_licenceFree = ':id_licenceFree',
+    id_licenceType = ':id_licenceType',
+}

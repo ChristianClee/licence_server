@@ -5,7 +5,7 @@ import {
     setDeletedSubscribedLicenceController,
 } from '@/controllers/licencesSubscribeController.js'
 import { urls } from '@/db.js';
-import { e_route } from './types.js'
+import { e_route } from '../types/routePaths.js'
 
 
 const licencesSubscribeRouter =  Router();

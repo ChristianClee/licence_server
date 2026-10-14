@@ -1,0 +1,1 @@
+UPDATE Average_price SET Average_price.deleted_date_time = CURRENT_TIMESTAMP WHERE id = ?;

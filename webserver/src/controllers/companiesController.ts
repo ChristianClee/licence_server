@@ -1,5 +1,5 @@
 import type { Request, Response } from 'express'
-import { addCompanyDb, getAllCompanyDb, setDeleteCompanyDb } from "@/services/companiesService.js"
+import { addCompanyDb, getAllCompanyDb, setDeletedCompanyDb } from "@/services/companiesService.js"
 
 
 const id_super_user = 1; 
@@ -24,7 +24,7 @@ export async function setDeleteCompanyController(req: Request, res: Response) {
   // to do 
   const queryParam = 11;
   try {
-    await setDeleteCompanyDb( queryParam )
+    await setDeletedCompanyDb( queryParam )
   } catch (err) {
     console.log(err);
   }

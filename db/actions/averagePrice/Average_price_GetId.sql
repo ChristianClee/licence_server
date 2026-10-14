@@ -1,0 +1,1 @@
+SELECT * FROM Average_price WHERE Average_price.deleted_date_time IS NULL AND Average_price.id_Licence_type = ?;

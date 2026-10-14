@@ -1,0 +1,1 @@
+SELECT EXISTS(SELECT * FROM Price WHERE id = ?) AS exists_flag;

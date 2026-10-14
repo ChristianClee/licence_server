@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { addUserController, getAllUsersController, setDeletedUserController } from '@/controllers/usersController.js';
-import { e_route } from './types.js'
+import { e_route } from '../types/routePaths.js'
 
 
 const userRouter = Router();

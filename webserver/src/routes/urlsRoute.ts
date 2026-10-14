@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { addUrlController, getAllUrlsController, setDeletedUrlController } from '@/controllers/urlsController.js';
-import { e_route } from './types.js'
+import { e_route } from '../types/routePaths.js'
 
 
 const urlsRouter = Router();

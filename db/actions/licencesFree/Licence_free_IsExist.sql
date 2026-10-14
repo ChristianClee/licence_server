@@ -1,0 +1,1 @@
+SELECT EXISTS(SELECT * FROM Licence_free WHERE id = ?) AS exists_flag;

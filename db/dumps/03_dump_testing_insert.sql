@@ -11,7 +11,7 @@ INSERT INTO Url(id_Licence_type, id_Company, url) VALUES
 (3,1, '/test_url_extend');
 
 
-INSERT INTO Average_Price( id_Licence_type,price ) VALUES
+INSERT INTO Average_price( id_Licence_type,price ) VALUES
 (1, 100),
 (2, 200),
 (3, 300);

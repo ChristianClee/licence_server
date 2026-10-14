@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { addChangeLicenceController, getAllChangeLicenceController, setDeleteChangeLicenceController } from '@/controllers/changedLicenceController.js'
-import { e_route } from './types.js'
+import { e_route } from '../types/routePaths.js'
 
 
 const changedLicenceRouter = Router();

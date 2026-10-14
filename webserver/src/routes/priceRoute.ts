@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { addPriceController, getAllPriceController, updatePriceController } from '@/controllers/priceController.js';
-import { e_route } from './types.js'
+import { e_route } from '../types/routePaths.js'
 
 
 const priceRouter = Router();

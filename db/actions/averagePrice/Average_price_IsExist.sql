@@ -1,0 +1,1 @@
+SELECT EXISTS(SELECT * FROM Average_price WHERE Average_price.id_Licence_type = ? ) AS exists_flag;

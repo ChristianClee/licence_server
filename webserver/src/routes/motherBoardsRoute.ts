@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { addMotherBoardController, getAllMotherBoardController, setDeleteMotherBoardController } from '@/controllers/motherBoardsController.js';
-import { e_route } from './types.js'
+import { e_route } from '../types/routePaths.js'
 
 const motherBoardRouter =  Router();
 motherBoardRouter.get(`${e_route.mother_boards}`, getAllMotherBoardController)

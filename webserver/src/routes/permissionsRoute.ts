@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { getAllPermissionsController } from '@/controllers/permissionsController.js';
-import { e_route } from './types.js'
+import { e_route } from '../types/routePaths.js'
 
 
 const permissionRouter = Router();
