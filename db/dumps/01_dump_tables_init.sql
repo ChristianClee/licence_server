@@ -85,8 +85,8 @@ CREATE TABLE Permission(
 CREATE TABLE User(
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_Company INT NOT NULL,
-    password VARCHAR(255) NOT NULL,
     id_Permission INT NOT NULL,
+    password VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     phone VARCHAR(255) DEFAULT NULL,
     created_date_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,

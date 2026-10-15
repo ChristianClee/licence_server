@@ -44,9 +44,9 @@ INSERT INTO Mother_board(id_Licence_subscribe, serial_number, model_number) VALU
 (3, 'SERIAL_3', 'MODEL_3'),
 (4, 'SERIAL_4', 'MODEL_4');
 
-INSERT INTO User(id_Company, password, id_permission, email) VALUES
-(1, 'QWERTY', 1, 'ilya.mishkov@gmail.com'),
-(1, 'fffffff', 2, 'sergey.ivanov@gmail.com');
+INSERT INTO User(id_Company, id_permission, password, email) VALUES
+(1, 1, 'QWERTY',  'ilya.mishkov@gmail.com'),
+(1, 2, '1234567',  'sergey.ivanov@gmail.com', '97-43-94');
 
 INSERT INTO Changed_licence_req(id_User, id_Mother_board, serial_number_new_board, model_number_new_board) VALUES
 (2, 1, 'SERIAL_1', 'MODEL_1'),

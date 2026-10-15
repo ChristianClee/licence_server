@@ -1,35 +1,38 @@
 import type { Request, Response } from 'express';
-import { addChangeLicenceDb, getAllChangeLicenceDb, setDeleteChangeLicenceDb } from '@/services/changedLicenceService.js';
+import { addChangedLicenceDb, getAllChangedLicenceDb, setDeleteChangedLicenceDb } from '@/services/changedLicenceService.js';
+import { e_params } from '@/types/routePaths.js'
 
-
-export async function getAllChangeLicenceController(req:Request, res:Response){
+export async function getAllChangedLicenceController(req:Request, res:Response){
     try{
-        await getAllChangeLicenceDb()
+        await getAllChangedLicenceDb()
     }catch(err){
         
     }
 }
-export async function addChangeLicenceController(req:Request, res:Response){
-    const id_user = 1;
-    const id_motherBoard = 1
-    const serial_number_new_board = `SERIAL_new ${Date.now()}`
-    const model_number_new_board = `MODEL_new ${Date.now()}`
+export async function addChangedLicenceController(req:Request, res:Response){
+    const id_user = Number(req.params[e_params.id_user])
+        if (Number.isNaN(id_user)) {
+        return res.status(400).json({ error: 'invalid id_company' })
+    }
+
+    const {id_motherBoard, serial_number_new_board, model_number_new_board} = req.body
     const created_ip = '10.110.0.1'
     try{
-        await addChangeLicenceDb(
-            id_user, id_motherBoard,
+        await addChangedLicenceDb(
+            id_user,
+            id_motherBoard,
             serial_number_new_board,
-            model_number_new_board,
+            model_number_new_board, 
             created_ip
         )
     }catch(err){
 
     }
 }
-export async function setDeleteChangeLicenceController(req:Request, res:Response){
+export async function setDeleteChangedLicenceController(req:Request, res:Response){
     const id_set_delete = 1
     try{
-        await setDeleteChangeLicenceDb(id_set_delete)
+        await setDeleteChangedLicenceDb(id_set_delete)
     }catch(err){
 
     }

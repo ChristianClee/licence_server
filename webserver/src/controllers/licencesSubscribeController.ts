@@ -3,7 +3,7 @@ import { getAllSubscribedLicenceDb, addSubscribeLicenceDb, setDeletedSubscribedL
 
 
 
-export async function getSubscribedLicenceController(req: Request, res: Response) {
+export async function getAllSubscribedLicenceController(req: Request, res: Response) {
   try {
     await getAllSubscribedLicenceDb()
   } catch (err) {
@@ -14,6 +14,7 @@ export async function addSubscribedLicenceController(req: Request, res: Response
   const id_licence_free = 1;
   const id_url = 1;
   const created_ip = '192.168.1.1';
+  
   try {
     await addSubscribeLicenceDb(id_licence_free, id_url, created_ip)
   } catch (err) {

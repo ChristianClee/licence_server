@@ -1,0 +1,1 @@
+SELECT EXISTS(SELECT * FROM Mother_board WHERE id = ?) AS exists_flag;

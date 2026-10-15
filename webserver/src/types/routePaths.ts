@@ -16,4 +16,8 @@ export enum e_params {
     id_company = ':id_company',
     id_licenceFree = ':id_licenceFree',
     id_licenceType = ':id_licenceType',
+    id_licenceSubscribed = ':id_licenceSubscribed',
+    id_user = ':id_user',
+    id_changedLicence = ':id_changedLicence',
+    id_url = 'id_url',
 }

@@ -1,0 +1,1 @@
+UPDATE Licence_free SET Licence_subscribe.deleted_date_time = CURRENT_TIMESTAMP WHERE id = ?;

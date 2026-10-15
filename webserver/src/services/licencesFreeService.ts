@@ -3,15 +3,15 @@ import { filter_deleted_date_time } from '@/utils/index.js'
 import { e_licenceFree_table, e_licenceType_table } from '@/types/tablesDb.js'
 import {e_methodsDb, e_nameTablesDb} from '@/types/other.js'
 import {e_licenceType_column} from '@/types/columnsDb.js'
-
+import type{ i_exist } from '@/types/other.js'
 import type { RowDataPacket, ResultSetHeader } from "mysql2"
 import type { i_licenceFree_table } from '@/types/tablesDb.js'
 
-interface i_exist extends RowDataPacket
-{
-    exists_flag: number
-}
-interface i_company_table_db extends RowDataPacket, i_licenceFree_table {}
+// interface i_exist extends RowDataPacket
+// {
+//     exists_flag: number
+// }
+interface i_common_table extends RowDataPacket, i_licenceFree_table {}
 
 
 const pathDbRequest = `licencesFree/${e_nameTablesDb.Licence_free}_`
@@ -21,7 +21,6 @@ export async function addFreeLicencesDb(
     id_super_admin: number,
     id_price: number,
     licence_count: number
-
 )
 : Promise<number[] | Error>
 {
@@ -65,7 +64,7 @@ export async function getAllFreeLicenceDb(
 ): Promise<i_licenceFree_table[]>
 {
     const sqlRequest = `${pathDbRequest}${e_methodsDb.GetAll}.sql`
-    const response = await dbReq<i_company_table_db[]>('execute', sqlRequest , [id_company])
+    const response = await dbReq<i_common_table[]>('execute', sqlRequest , [id_company])
     if(is_filter)
     {
         return filter_deleted_date_time(response)
