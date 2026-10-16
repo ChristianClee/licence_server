@@ -3,7 +3,7 @@ import { addMotherBoardDb, getAllMotherBoardDb, setDeleteMotherBoardDb } from '@
 
 export async function getAllMotherBoardController(req: Request, res: Response){
     try{
-        await getAllMotherBoardDb()
+        // await getAllMotherBoardDb()
     }catch(err){
         console.log(err)
     }

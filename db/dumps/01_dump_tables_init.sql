@@ -25,7 +25,7 @@ CREATE TABLE Url(
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_Licence_type INT NOT NULL,
     id_Company INT NOT NULL,
-    url VARCHAR(1024) NOT NULL,
+    url VARCHAR(1024) UNIQUE NOT NULL,
     FOREIGN KEY (id_Licence_type) REFERENCES Licence_type(id),
     FOREIGN KEY (id_Company) REFERENCES Company(id)
 );

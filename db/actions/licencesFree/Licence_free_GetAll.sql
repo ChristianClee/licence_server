@@ -1,0 +1,1 @@
+SELECT * FROM Licence_free WHERE Licence_free.id_Company = ?;

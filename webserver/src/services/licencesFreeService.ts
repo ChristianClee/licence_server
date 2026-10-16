@@ -61,7 +61,7 @@ export async function setDeletedFreeLicenceDb(id_set_delete:number): Promise<voi
 export async function getAllFreeLicenceDb(     
     id_company: number,
     is_filter: boolean
-): Promise<i_licenceFree_table[]>
+): Promise<i_licenceFree_table[] | Error>
 {
     const sqlRequest = `${pathDbRequest}${e_methodsDb.GetAll}.sql`
     const response = await dbReq<i_common_table[]>('execute', sqlRequest , [id_company])
