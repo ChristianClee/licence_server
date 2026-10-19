@@ -3,14 +3,14 @@ USE mishkov_db;
 
 CREATE TABLE Super_admin (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL
+    name VARCHAR(256) NOT NULL,
+    password VARCHAR(256) NOT NULL
 );
 
 CREATE TABLE Company (
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_Super_admin INT NOT NULL DEFAULT 1 ,
-    name VARCHAR(255) NOT NULL,
+    name VARCHAR(256) NOT NULL,
     created_date_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     deleted_date_time DATETIME DEFAULT NULL,
     FOREIGN KEY (id_Super_admin) REFERENCES Super_admin(id)
@@ -18,17 +18,25 @@ CREATE TABLE Company (
 
 CREATE TABLE Licence_type(
     id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(255) NOT NULL
+    name VARCHAR(256) NOT NULL
 );
 
 CREATE TABLE Url(
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_Licence_type INT NOT NULL,
     id_Company INT NOT NULL,
-    url VARCHAR(1024) UNIQUE NOT NULL,
+    url VARCHAR(256) NOT NULL,
     FOREIGN KEY (id_Licence_type) REFERENCES Licence_type(id),
     FOREIGN KEY (id_Company) REFERENCES Company(id)
 );
+CREATE TABLE Bad_request(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_Url INT,
+    error_message VARCHAR(2048) NOT NULL,
+    created_ip VARCHAR(256) DEFAULT NULL,
+    created_date_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE Average_price(
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_Licence_type INT NOT NULL,
@@ -60,7 +68,7 @@ CREATE TABLE Licence_subscribe(
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_Licence_free INT UNIQUE NOT NULL,
     id_Url INT NOT NULL, 
-    created_ip VARCHAR(255) DEFAULT NULL,
+    created_ip VARCHAR(256) DEFAULT NULL,
     created_date_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     deleted_date_time DATETIME DEFAULT NULL,
     FOREIGN KEY (id_Licence_free) REFERENCES Licence_free(id),
@@ -70,8 +78,8 @@ CREATE TABLE Licence_subscribe(
 CREATE TABLE Mother_board(
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_Licence_subscribe INT NOT NULL,
-    serial_number VARCHAR(1024) NOT NULL,
-    model_number VARCHAR(1024) NOT NULL,
+    serial_number VARCHAR(512) NOT NULL,
+    model_number VARCHAR(512) NOT NULL,
     created_date_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     deleted_date_time DATETIME DEFAULT NULL,
     FOREIGN KEY (id_Licence_subscribe) REFERENCES Licence_subscribe(id)
@@ -79,16 +87,16 @@ CREATE TABLE Mother_board(
 
 CREATE TABLE Permission(
     id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(255) NOT NULL
+    name VARCHAR(256) NOT NULL
 );
 
 CREATE TABLE User(
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_Company INT NOT NULL,
     id_Permission INT NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
-    phone VARCHAR(255) DEFAULT NULL,
+    password VARCHAR(256) NOT NULL,
+    email VARCHAR(256) NOT NULL,
+    phone VARCHAR(256) DEFAULT NULL,
     created_date_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     deleted_date_time DATETIME DEFAULT NULL,
     FOREIGN KEY (id_Company) REFERENCES Company(id),
@@ -99,9 +107,9 @@ CREATE TABLE Changed_licence_req(
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_User INT NOT NULL,
     id_Mother_board INT UNIQUE NOT NULL,
-    serial_number_new_board VARCHAR(1024) NOT NULL,
-    model_number_new_board VARCHAR(1024) NOT NULL,
-    created_ip VARCHAR(255) DEFAULT NULL,
+    serial_number_new_board VARCHAR(512) NOT NULL,
+    model_number_new_board VARCHAR(512) NOT NULL,
+    created_ip VARCHAR(256) DEFAULT NULL,
     created_date_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     deleted_date_time DATETIME DEFAULT NULL,
     FOREIGN KEY (id_User) REFERENCES User(id),

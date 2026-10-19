@@ -19,7 +19,6 @@ export async function getAllMotherBoardDb(is_filter:boolean, id_company: number)
     }
     return response
 }
-
 export async function addMotherBoardDb(id_licence_subscribe:number, serial_number:string, model_number:string):Promise <number|Error>
 {
     const sqlRequest = `${pathDbRequest}${e_methodsDb.AddOne}.sql`

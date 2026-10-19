@@ -83,6 +83,14 @@ export enum e_changedLicenceReq_table{
     created_date_time = 'created_date_time',
     deleted_date_time = 'deleted_date_time',
 }
+export enum e_bad_request{
+    id = 'id',
+    id_Url = 'id_Url',
+    error_message = 'error_message',
+    created_ip = 'created_ip',
+    created_date_time = 'created_date_time'
+}
+
 
 // tables interfaces
 export interface i_superAdmin_table{
@@ -166,5 +174,12 @@ export interface i_changedLicenceReq_table{
     [e_changedLicenceReq_table.created_ip] : string,
     [e_changedLicenceReq_table.created_date_time] : Date,
     [e_changedLicenceReq_table.deleted_date_time] : Date | null,
+}
+export interface i_bad_request{
+    [e_bad_request.id]: number,
+    [e_bad_request.id_Url]: number,
+    [e_bad_request.created_ip]: string,
+    [e_bad_request.error_message]: string,
+    [e_bad_request.created_date_time]: Date
 }
 

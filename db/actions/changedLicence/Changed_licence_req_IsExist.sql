@@ -1,0 +1,1 @@
+SELECT EXISTS(SELECT * FROM Changed_licence_req WHERE Changed_licence_req.serial_number_new_board = ? AND Changed_licence_req.model_number_new_board = ?) AS exists_flag;

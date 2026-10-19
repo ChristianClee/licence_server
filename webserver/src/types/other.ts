@@ -18,6 +18,8 @@ export enum e_nameTablesDb{
     Permission = 'Permission',
     User = 'User',
     Changed_licence_req = 'Changed_licence_req',
+    Bad_request = 'Bad_request'
+
 }
 export enum e_methodsDb{
     SetDeleted = 'SetDeleted',

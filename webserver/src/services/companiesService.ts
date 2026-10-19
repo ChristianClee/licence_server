@@ -5,9 +5,10 @@ import { e_nameTablesDb, e_methodsDb } from '@/types/other.js'
 import type{ i_exist } from '@/types/other.js'
 import type { RowDataPacket, ResultSetHeader } from "mysql2";
 import type { i_company_table } from '@/types/tablesDb.js'
+// import { e_company_table } from '@/types/tablesDb.js'
 
-interface i_company_table_db extends RowDataPacket, i_company_table {}
-const pathDbRequest = `companies/${e_nameTablesDb.Company}_`
+interface i_common_table extends RowDataPacket, i_company_table {}
+export const pathDbRequest = `companies/${e_nameTablesDb.Company}_`
 
 export async function addCompanyDb(id_super_admin:number, name:string):Promise<number | Error>
 {
@@ -30,10 +31,10 @@ export async function setDeletedCompanyDb(id_set_delete: number):Promise<void | 
 export async function getAllCompanyDb( property_table: 'all', is_filter: boolean):Promise< i_company_table[]>
 export async function getAllCompanyDb( property_table: 'count', is_filter: boolean):Promise<number>
 export async function getAllCompanyDb( property_table: e_company_table.name, is_filter: boolean):Promise<e_company_table.name[]>
-export async function getAllCompanyDb( property_table: e_company_table.name | 'all' | 'count', is_filter: boolean ): Promise< string[] | number | i_company_table[] | Error> 
+export async function getAllCompanyDb( property_table: e_company_table.name | 'all' | 'count', is_filter: boolean ): Promise< string[] | number | i_company_table[] | Error>  
 {
     const sqlRequest = `${pathDbRequest}${e_methodsDb.GetAll}.sql`
-    const response = await dbReq<i_company_table_db[]>('query', sqlRequest);
+    const response = await dbReq<i_common_table[]>('query', sqlRequest);
     if(property_table == e_company_table.name)
     {
         if(is_filter)
@@ -57,4 +58,14 @@ export async function getAllCompanyDb( property_table: e_company_table.name | 'a
         }
         return response
     }
+}
+
+
+export async function  isIdCompanyExistDb(id_Company:number):Promise< number | undefined | Error> {
+    const sqlRequest = `${pathDbRequest}${e_methodsDb.GetId}.sql`
+    const response = await dbReq<i_common_table[]>('execute', sqlRequest, [id_Company]);
+    filter_deleted_date_time(response)
+    if(!response.length) throw new Error('')
+    
+    return response[0]?.[e_company_table.id]
 }
