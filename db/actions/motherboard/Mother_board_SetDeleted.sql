@@ -1,1 +1,1 @@
-UPDATE Licence_free SET Mother_board.deleted_date_time = CURRENT_TIMESTAMP WHERE id = ?;
+UPDATE Mother_board SET Mother_board.deleted_date_time  = CURRENT_TIMESTAMP WHERE id = ?;

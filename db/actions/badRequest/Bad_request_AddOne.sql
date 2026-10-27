@@ -1,2 +1,2 @@
-INSERT INTO Bad_request(id_Url, error_message, created_ip) VALUES
-(?, ?, ?)
+INSERT INTO Bad_request(id_Url, serial_number, model_number, created_ip,  error_message) VALUES
+(?, ?, ?, ?, ?)

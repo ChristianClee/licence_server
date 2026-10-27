@@ -1,10 +1,12 @@
 export enum e_route {
+    myrole = '/myrole',
+    passwords = '/passwords',
     users = '/users',
     companies = '/companies', 
     average_price = '/average_price',
     price = '/price',
     changed_licences = '/changed_licences',
-    licences_free = '/licencesFree',
+    licences_free = '/licences_free',
     licences_type = '/licences_type_route',
     licences_subscribed = '/licenses_subscribed',
     mother_boards = '/mother_boards',
@@ -13,11 +15,11 @@ export enum e_route {
     permission = '/permission'
 };
 export enum e_params {
-    id_company = ':id_company',
-    id_licenceFree = ':id_licenceFree',
-    id_licenceType = ':id_licenceType',
-    id_licenceSubscribed = ':id_licenceSubscribed',
-    id_user = ':id_user',
-    id_changedLicence = ':id_changedLicence',
-    id_url = 'id_url',
+    id_company = '/:id_company',
+    id_licenceFree = '/:id_licenceFree',
+    id_licenceType = '/:id_licenceType',
+    id_licenceSubscribed = '/:id_licenceSubscribed',
+    id_user = '/:id_user',
+    id_changedLicence = '/:id_changedLicence',
+    id_url = '/:id_url',
 }

@@ -1,10 +1,14 @@
 import { e_licenceType_column, e_permissionRole_column } from './columnsDb.js'
 
 // tables enums
+export enum e_passwords{
+    id = 'id',
+    hash = 'hash',
+    email = 'email'
+}
 export enum e_superAdmin_table{
     id = 'id',
-    name = 'name',
-    password = 'password'
+    id_Passwords = 'id_Passwords'
 }
 export enum e_company_table{
     id = 'id',
@@ -66,10 +70,8 @@ export enum e_permission_table{
 export enum e_user_table{
     id = 'id',
     id_Company = 'id_Company',
-    password = 'password',
+    id_Passwords = 'id_Passwords',
     id_Permission = 'id_Permission',
-    email = 'email',
-    phone = 'phone',
     created_date_time = 'created_date_time',
     deleted_date_time = 'deleted_date_time',
 }
@@ -87,16 +89,22 @@ export enum e_bad_request{
     id = 'id',
     id_Url = 'id_Url',
     error_message = 'error_message',
+    serial_number = 'serial_number',
+    model_number = 'model_number',
     created_ip = 'created_ip',
     created_date_time = 'created_date_time'
 }
 
 
 // tables interfaces
+export interface i_passwords{
+    [e_passwords.id] : number,
+    [e_passwords.hash] : string,
+    [e_passwords.email] : string,
+}
 export interface i_superAdmin_table{
     [e_superAdmin_table.id] : number,
-    [e_superAdmin_table.name] : string,
-    [e_superAdmin_table.password] : string,
+    [e_superAdmin_table.id_Passwords] : number,
 }
 export interface i_company_table{
     [e_company_table.id] : number,
@@ -158,10 +166,8 @@ export interface i_permission_table{
 export interface i_user_table{
     [e_user_table.id] : number,
     [e_user_table.id_Company] : number,
-    [e_user_table.password] : string,
+    [e_user_table.id_Passwords] : number,
     [e_user_table.id_Permission] : number,
-    [e_user_table.email] : string,
-    [e_user_table.phone] : string | null,
     [e_user_table.created_date_time] : Date,
     [e_user_table.deleted_date_time] : Date | null,
 }
@@ -179,6 +185,8 @@ export interface i_bad_request{
     [e_bad_request.id]: number,
     [e_bad_request.id_Url]: number,
     [e_bad_request.created_ip]: string,
+    [e_bad_request.serial_number]: string,
+    [e_bad_request.model_number]: string,
     [e_bad_request.error_message]: string,
     [e_bad_request.created_date_time]: Date
 }

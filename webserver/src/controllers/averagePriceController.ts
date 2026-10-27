@@ -1,5 +1,5 @@
 import type { Request, Response } from 'express';
-import { addAveragePriceDb, getAllAveragePriceDb } from '@/services/averagePriceService.js'
+import { addAveragePrice_Tr_Db, getAllAveragePriceDb } from '@/services/averagePriceService.js'
 
 export async function getAllAveragePriceController(req: Request, res: Response) {
   try {
@@ -11,7 +11,7 @@ export async function addAveragePriceController(req: Request, res: Response) {
     const id_licence_type = 1
     const price = 10000
   try {
-     await addAveragePriceDb(id_licence_type, price)
+     await addAveragePrice_Tr_Db(id_licence_type, price)
   } catch (err) {
   }
 }

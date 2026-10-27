@@ -61,6 +61,31 @@ export async function dbReq<T extends RowDataPacket[] | RowDataPacket[][]| Resul
   return rows as T;
 }
 
+export async function indexDb<T extends RowDataPacket[] | RowDataPacket[][] | ResultSetHeader>(
+  method: 'query',
+  sqlRequest: string
+): Promise<T>;
+
+export async function indexDb<T extends RowDataPacket[] | RowDataPacket[][]| ResultSetHeader>(
+  method: 'execute',
+  sqlRequest: string,
+  sqlReqArgs: any[]
+): Promise<T>;
+
+export async function indexDb<T extends RowDataPacket[] | RowDataPacket[][]| ResultSetHeader>(
+  method: 'query' | 'execute',
+  sqlRequest: string,
+  sqlReqArgs: any[] = []
+): Promise<T>
+{
+  if (method === 'query') {
+    const [rows] = await pool.query<T>(sqlRequest, sqlReqArgs);
+    return rows;
+  }
+  const [rows] = await pool.execute(sqlRequest, sqlReqArgs);
+  return rows as T;
+}
+
 
 
 export async function dbTransactionReq<T extends RowDataPacket[] | RowDataPacket[][] | ResultSetHeader>(
@@ -87,5 +112,32 @@ export async function dbTransactionReq<T extends RowDataPacket[] | RowDataPacket
     return rows;
   }
   const [rows] = await connection.execute(text, sqlReqArgs);
+  return rows as T;
+}
+
+export async function indexTransactionDb<T extends RowDataPacket[] | RowDataPacket[][] | ResultSetHeader>(
+  connection: PoolConnection,
+  method: 'query',
+  sqlRequest: string
+): Promise<T>;
+export async function indexTransactionDb<T extends RowDataPacket[] | RowDataPacket[][] | ResultSetHeader>(
+  connection: PoolConnection,
+  method: 'execute',
+  sqlRequest: string,
+  sqlReqArgs: any[]
+): Promise<T>;
+export async function indexTransactionDb<T extends RowDataPacket[] | RowDataPacket[][] | ResultSetHeader>(
+  connection: PoolConnection,
+  method: 'query' | 'execute',
+  sqlRequest: string,
+  sqlReqArgs: any[] = []
+): Promise<T>
+{
+  // const text = fs.readFileSync(path.join(__dirname, pathDBactions + fileNameSql), 'utf8');
+  if (method === 'query') {
+    const [rows] = await connection.query<T>(sqlRequest, sqlReqArgs);
+    return rows;
+  }
+  const [rows] = await connection.execute(sqlRequest, sqlReqArgs);
   return rows as T;
 }

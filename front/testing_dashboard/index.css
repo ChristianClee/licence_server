@@ -1,0 +1,45 @@
+*{
+    box-sizing: content-box;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem
+}
+.block{
+    background-color: bisque;
+    padding: 1rem;
+}
+.block_body {
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid black;
+}
+.form_action{
+    border: 1px solid black;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.change_licence{
+    border: 1px solid black;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.change_licence_container{
+    min-height: 1rem;
+    max-height: 15rem;
+    border: 1px solid black;
+    overflow-y: auto;
+}
+.motherboard_container{
+    display: flex;
+    justify-content: space-between;
+    /* gap: 1rem; */
+    padding: 0.1rem;
+    margin: 0.1rem;
+    background-color: bisque;
+}

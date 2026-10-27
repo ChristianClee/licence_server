@@ -1,1 +1,1 @@
-SELECT EXISTS(SELECT * FROM Licence_free WHERE id = ?) AS exists_flag;
+SELECT EXISTS(SELECT * FROM Licence_free WHERE Licence_free.id = ?) AS exists_flag;

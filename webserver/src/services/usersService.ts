@@ -1,8 +1,8 @@
-import { dbReq } from "@/db.js"
+import { dbReq, indexDb } from "@/db.js"
 import type { RowDataPacket, ResultSetHeader } from "mysql2";
 import {e_methodsDb, e_nameTablesDb} from '@/types/other.js'
 
-const pathDbRequest = `users/${e_nameTablesDb.User}_`
+// const pathDbRequest = `users/${e_nameTablesDb.User}_`
 
 
 export async function getAllUserDb(){
@@ -17,8 +17,11 @@ export async function addUserDb(
     phone: string | null = null
 ): Promise <number | Error>
 {
-    const sqlRequest = `${pathDbRequest}${e_methodsDb.AddOne}.sql`
-    const response = await dbReq<ResultSetHeader>('execute', sqlRequest , [id_company, id_permission, password, email, phone]);
+    const sqlRequest_1 = 
+    "INSERT INTO User(id_Company, id_Permission, password, email, phone) "
+    + "VALUES (?,?,?,?,?)"
+    + ";"
+    const response = await indexDb<ResultSetHeader>('execute', sqlRequest_1 , [id_company, id_permission, password, email, phone]);
     return response.insertId
 }
 

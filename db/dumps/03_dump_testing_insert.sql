@@ -1,6 +1,6 @@
 USE mishkov_db;
-INSERT INTO Super_admin(name, password) VALUES
-('ilya', '123');
+-- INSERT INTO Super_admin(name, password) VALUES
+-- ('ilya', '123');
 
 INSERT INTO Company(id_Super_admin, name) VALUES
 (1, 'ICL'); 
@@ -9,12 +9,6 @@ INSERT INTO Url(id_Licence_type, id_Company, url) VALUES
 (1,1, '/test_url_base'),
 (2,1, '/test_url_server'),
 (3,1, '/test_url_extend');
-
-
-INSERT INTO Average_price( id_Licence_type,price ) VALUES
-(1, 100),
-(2, 200),
-(3, 300);
 
 INSERT INTO Price(id_Average_price, contract_price) VALUES
 (1, 110),
@@ -35,8 +29,8 @@ INSERT INTO Licence_free(id_Company, id_Price ) VALUES
 INSERT INTO Licence_subscribe(id_Licence_free, id_Url) VALUES
 (1,1),
 (2,1),
-(5,1),
-(8,1);
+(5,2),
+(8,3);
 
 INSERT INTO Mother_board(id_Licence_subscribe, serial_number, model_number) VALUES
 (1, 'SERIAL_1', 'MODEL_1'),
@@ -44,9 +38,13 @@ INSERT INTO Mother_board(id_Licence_subscribe, serial_number, model_number) VALU
 (3, 'SERIAL_3', 'MODEL_3'),
 (4, 'SERIAL_4', 'MODEL_4');
 
-INSERT INTO User(id_Company, id_Permission, password, email, phone) VALUES
-(1, 1, 'QWERTY', 'ilya.mishkov@gmail.com', NULL),
-(1, 2, '1234567', 'sergey.ivanov@gmail.com', '97-43-94');
+INSERT INTO Passwords(hash, email) VALUES 
+('$2b$10$UTQVknwK1N0Kbz3/Bghake8SJCkEWtz.vXmrXYmIF5EgeE8mPZpva', 'One123456@gmail.com'),
+('$2b$10$zYQMR5IaZ0ySDikJlvQPBuUU1omI1fPqjiNgOZlUozS88HLv5s1jy', 'Two123456@gmail.com');
+
+INSERT INTO User(id_Company, id_Permission, id_Passwords) VALUES
+(1, 1, 2),
+(1, 2, 3);
 
 INSERT INTO Changed_licence_req(id_User, id_Mother_board, serial_number_new_board, model_number_new_board) VALUES
 (2, 1, 'SERIAL_1', 'MODEL_1'),

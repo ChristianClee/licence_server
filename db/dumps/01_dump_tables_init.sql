@@ -1,10 +1,17 @@
 CREATE DATABASE IF NOT EXISTS mishkov_db;
 USE mishkov_db;
 
+
+CREATE TABLE Passwords (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    hash VARCHAR(512) NOT NULL,
+    email VARCHAR(256) UNIQUE NOT NULL
+);
+
 CREATE TABLE Super_admin (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(256) NOT NULL,
-    password VARCHAR(256) NOT NULL
+    id_Passwords INT UNIQUE NOT NULL,
+    FOREIGN KEY (id_Passwords) REFERENCES Passwords(id)
 );
 
 CREATE TABLE Company (
@@ -32,8 +39,10 @@ CREATE TABLE Url(
 CREATE TABLE Bad_request(
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_Url INT,
-    error_message VARCHAR(2048) NOT NULL,
+    serial_number VARCHAR(512) NOT NULL,
+    model_number VARCHAR(512) NOT NULL,
     created_ip VARCHAR(256) DEFAULT NULL,
+    error_message VARCHAR(2048) NOT NULL,
     created_date_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -94,13 +103,12 @@ CREATE TABLE User(
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_Company INT NOT NULL,
     id_Permission INT NOT NULL,
-    password VARCHAR(256) NOT NULL,
-    email VARCHAR(256) NOT NULL,
-    phone VARCHAR(256) DEFAULT NULL,
+    id_Passwords INT UNIQUE NOT NULL,
     created_date_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     deleted_date_time DATETIME DEFAULT NULL,
     FOREIGN KEY (id_Company) REFERENCES Company(id),
-    FOREIGN KEY (id_Permission) REFERENCES Permission(id)
+    FOREIGN KEY (id_Permission) REFERENCES Permission(id),
+    FOREIGN KEY (id_Passwords) REFERENCES Passwords(id)
 );
 
 CREATE TABLE Changed_licence_req(

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div class="content">
+        <div class="block">
+            <div>all licences</div>
+            <div class="block_body">
+                <div>
+                    <div>licence_base</div>
+                    <div id="licence_base">
+                        none
+                    </div>
+                </div>
+                <div>
+                    <div>licence_base</div>
+                    <div id="licence_server">
+                        none
+                    </div>
+                </div>
+                <div>
+                    <div>licence_base</div>
+                    <div id="licence_extend">
+                        none
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="block">
+            <div>average price</div>
+            <div class="block_body">
+                <div>
+                    <div>licence_base average_price</div>
+                    <div id="licence_base_average_price">
+                        100
+                    </div>
+                </div>
+                <div>
+                    <div>licence_base average_price</div>
+                    <div id="licence_server_average_price">
+                        200
+                    </div>
+                </div>
+                <div>
+                    <div>licence_base average_price</div>
+                    <div id="licence_extend_average_price">
+                        300
+                    </div>
+                </div>
+            </div>
+            <div>
+            
+            </div>
+        </div>
+
+        <div>
+            <div>all company</div>
+            <div id="company_name_list"></div>
+        </div>
+        
+        <form class="form_action" id="licenceForm" action="">
+            <h2>Add licence</h2>
+            
+            <div>
+                <label for="licence_count">Count licence</label>
+                <input type="number" name="count" id="licence_count" min="1" required value="12">
+        </div>
+
+        <div>
+            <label for="contract_price">Contract price</label>
+            <input type="number" name="price" id="contract_price" 
+                placeholder="0.00" step="0.01" min="0" required value="1000">
+        </div>
+
+        <div>
+            <label for="company_name">Company name</label>
+            <select name="company" id="company_name" required value="1">
+                <option value="">-- choose company --</option>
+                <option value="1">ICL</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="licence_type">Type licence</label>
+            <select name="type" id="licence_type" required value="base">
+                <option value="">-- choose type licence --</option>
+                <!-- <option value="base">Base</option> -->
+                <!-- <option value="server">Server</option> -->
+                <!-- <option value="extend" selected>Extend</option> -->
+            </select>
+        </div>
+
+        <button type="submit">Submit</button>
+        </form>
+
+        <div class="change_licence">
+            <div>licence for change</div>
+
+            <div>
+                <input type="text" placeholder="new serial number">
+                <label for="">new serial number motherboard</label>
+            </div>
+            <div>
+                <input type="text" placeholder="new model number">
+                <label for="">new model number motherboard</label>
+            </div>
+
+            <div class="change_licence_container" id="change_licence_container">
+                
+            </div>
+            <div>hello</div>
+        </div>
+
+        <div>
+            <div>subscribe licence</div>
+        </div>
+    </div>
+    
+    <script src="./index.js"></script>
+</body>
+</html>

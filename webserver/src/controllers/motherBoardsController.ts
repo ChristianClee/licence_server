@@ -2,8 +2,16 @@ import type { Request, Response } from 'express'
 import { addMotherBoardDb, getAllMotherBoardDb, setDeleteMotherBoardDb } from '@/services/motherBoardsService.js'
 
 export async function getAllMotherBoardController(req: Request, res: Response){
+    const id_company:number = Number(req.params.id_company)
+    if( !id_company )
+    {
+    console.log('id_company', id_company);
+    res.status(400).json({error: 'Invalid request params'})
+    return
+    }
     try{
-        // await getAllMotherBoardDb()
+        const data = await getAllMotherBoardDb(id_company, true)
+        res.status(200).json({data})
     }catch(err){
         console.log(err)
     }

@@ -1,4 +1,5 @@
 import { execSync, exec } from "child_process"
+import { spawn } from "child_process"
 import fs from 'fs/promises'
 import chokidar from "chokidar"
 import path from "path"
@@ -60,18 +61,41 @@ async function tsCompilation(isLogFunc) {
   }
 }
 function startServer(){
-  server = exec(`node ${__buildDevFile}`);
-  server.stdout?.pipe(process.stdout);
-  server.stderr?.pipe(process.stderr);
+  // server = exec(`node ${__buildDevFile}`);
+  // server.stdout?.pipe(process.stdout);
+  // server.stderr?.pipe(process.stderr);
+  server = spawn('node', [__buildDevFile], {stdio: 'inherit'});
+  server.on('exit', (code, signal) => {
+    console.log(`node exited: code =${code} signal=${signal}`);
+  })
+  // server.on('exit', (code, signal) => {
+    // console.log(`node exited: code=${code} signal=${signal}`)
+  // })
 }
 function stopServer(){
-  server.kill();
-  server = null;
+  // server.kill();
+  // server = null;
+    return new Promise((resolve) => {
+    if (!server) return resolve();
+    const proc = server;
+    server = null;
+
+    let done = false;
+    const finish = () => { if (!done) { done = true; resolve(); } };
+
+    proc.once('exit', finish);
+    proc.kill('SIGTERM');
+
+    setTimeout(() => {
+      try { proc.kill('SIGKILL'); } catch {}
+      finish();
+    }, 3000);
+  });
 }
 async function buildDev(isLogFunc = false) {
   try{
     if(server){
-      stopServer()
+      await stopServer()
     }
     await clearDir(__buildDevDir)
     await tsCompilation(isLogFunc)

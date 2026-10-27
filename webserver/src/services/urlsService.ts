@@ -1,4 +1,4 @@
-import { dbReq } from "@/db.js"
+import { dbReq, indexDb } from "@/db.js"
 import type { RowDataPacket, ResultSetHeader } from "mysql2";
 import { e_nameTablesDb, e_methodsDb } from '@/types/other.js'
 import  type { i_url_table } from '@/types/tablesDb.js'
@@ -10,26 +10,32 @@ import type { i_company_table } from '@/types/tablesDb.js'
 interface i_common_table extends RowDataPacket, i_url_table {}
 interface i_common_company_table extends RowDataPacket, i_company_table {}
 
-const pathDbRequest = `urls/${e_nameTablesDb.Url}_`
+// const pathDbRequest = `urls/${e_nameTablesDb.Url}_`
 
 
 export async function getAllUrlsDb(){
 
 }
 export async function  getIdUrlParamDb(url:string ):Promise< i_url_table> {
-    const sqlRequest = `${pathDbRequest}${e_methodsDb.GetId}.sql`
-    const response = await dbReq<i_common_table[]>('execute', sqlRequest, [url]);
+    const sqlRequest_1 = 
+        "SELECT * "
+        + "FROM Url " 
+        + "WHERE Url.url = ?"
+        + ";"
+    const response = await indexDb<i_common_table[]>('execute', sqlRequest_1, [url]);
     if ( !response[0]?.[e_url_table.id] ) throw new Error(`In Data base no ${url} route`)
     if ( !response[0]?.[e_url_table.id_Company] ) throw new Error(`In Data base no ${url} route`)
     return response[0]
 }
 
-export async function  getIdCompanyParamDb(id_Company: number, url: string):Promise< number | Error> {
-    // const id_Company = await getIdUrlParamDb(url)
+export async function  getIdCompanyParamDb(id_Company: number, url: string):Promise< number > {
+    const sqlRequest_1 = 
+        "SELECT * "
+        + "FROM Company "
+        + "WHERE Company.id = ?"
+        + ";"
 
-    const sqlRequest_GetID = `${companyPathDbReq}${e_methodsDb.GetId}.sql`
-
-    const response_company = await dbReq<i_common_company_table[]>('execute', sqlRequest_GetID, [id_Company]);
+    const response_company = await indexDb<i_common_company_table[]>('execute', sqlRequest_1, [id_Company]);
     if(!response_company.length) throw new Error(`No one company matched to ${url} `)
 
     const filteredCompanies = filter_deleted_date_time(response_company)

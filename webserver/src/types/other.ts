@@ -34,3 +34,11 @@ export interface i_exist extends RowDataPacket
 {
     exists_flag: number
 }
+export interface i_count extends RowDataPacket
+{
+    count: number
+}
+export interface i_id extends RowDataPacket
+{
+    id: number
+}

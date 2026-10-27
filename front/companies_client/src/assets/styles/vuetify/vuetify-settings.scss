@@ -1,0 +1,5 @@
+@forward 'vuetify/settings' with (
+  // $card-elevation: 0,
+  // $button-height: 40px,
+  $border-radius-root: 6px  // попробуйте это
+);

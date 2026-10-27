@@ -1,4 +1,8 @@
 import express from 'express';
+import cors from 'cors';
+import cookieParser from 'cookie-parser'
+
+import { loginRoute } from "@/routes/loginRoute.js"
 import { superUserRouter } from "@/routes/superUsersRoute.js";
 import { companyRouter } from '@/routes/companiesRoute.js';
 import { userRouter } from '@/routes/userRoute.js';
@@ -11,12 +15,32 @@ import { licencesSubscribeRouter } from '@/routes/licensesSubscribedRoute.js';
 import { priceRouter } from "@/routes/priceRoute.js";
 import { averagePriceRouter } from "@/routes/averagePriceRoute.js";
 import { motherBoardRouter } from '@/routes/motherBoardsRoute.js';
-
+import { authMiddleware } from '@/middlewares/authMiddleware.js'
+import { roleRoute } from '@/routes/roleRoute.js'
 
 const app = express();
 
-app.use(express.json());
 
+// for motherboard client
+// app.use(cors({
+//     origin: 'http://localhost:5173',
+//     credentials: true
+// }));
+//  set it for motherboard client
+
+// for tests headers
+// app.use((req, res, next) => {
+//   console.log(`\n[${req.method}] ${req.originalUrl}`)
+//   console.log(req.headers)
+//   next()
+// })
+
+app.use(express.json());
+app.use(cookieParser());
+
+app.use('/api/login', loginRoute );
+app.use('/api', authMiddleware);
+app.use('/api', roleRoute);
 app.use('/api', superUserRouter );
 app.use('/api', companyRouter);
 app.use('/api', userRouter); 
